@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mi Web Personal</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: #111;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 3rem;
-        }
-    </style>
-</head>
 <body>
     <h1>Bienvenido a mi web</h1>
 </body>
