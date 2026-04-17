@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi Panel ESP32</title>
+  <link rel="icon" type="image/png" href="../../img/cybertron.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="index-bg autobots-page">
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="../index-es.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index-es.html">Inicio</a></li>
+      <li><a href="../autobots-es.html">Autobots</a></li>
+      <li><a href="../decepticons-es.html">Decepticons</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-detail">
+
+    <p class="detail-breadcrumb">
+      <a href="../index-es.html">Inicio</a><span>›</span>
+      <a href="../autobots-es.html">Autobots</a><span>›</span>
+      WiFi Panel ESP32
+    </p>
+
+    <div class="detail-hero">
+      <p class="detail-eyebrow">autobots · hardware · ESP32 · IoT · WebSocket</p>
+      <h1 class="detail-title">WiFi Panel ESP32</h1>
+      <p class="detail-desc">
+        Convierte un ESP32 en un panel de monitorización en tiempo real accesible desde el navegador. El ESP32 se conecta a tu red WiFi, sirve una interfaz web desde SPIFFS y abre un WebSocket que emite continuamente datos del sistema en formato JSON: IP, RSSI, RAM, temperatura interna, uptime y más.
+      </p>
+      <div class="detail-meta">
+        <span class="project-status status-active" style="position:static;">Activo</span>
+        <span class="stack-tag">C++</span>
+        <span class="stack-tag">PlatformIO</span>
+        <span class="stack-tag">ESP32</span>
+        <span class="stack-tag">WebSocket</span>
+        <span class="stack-tag">SPIFFS</span>
+        <span class="stack-tag">JSON</span>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <a href="https://github.com/patpuralu/Wifi_panel-ESP32" target="_blank" class="btn-large btn-gh-auto">↗ Ver en GitHub</a>
+      <a href="../autobots-es.html" class="btn-large btn-outline">← Volver</a>
+    </div>
+
+    <!-- Live fake panel as screenshot -->
+    <div class="detail-screenshot" style="aspect-ratio:16/8; height:auto;">
+      <div class="fake-panel" style="grid-template-columns:repeat(4,1fr);">
+        <div class="panel-cell">
+          <span class="panel-label">SSID</span>
+          <span class="panel-value">HomeNet_5G</span>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">IP Local</span>
+          <span class="panel-value ok">192.168.1.50</span>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">Gateway</span>
+          <span class="panel-value">192.168.1.1</span>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">MAC</span>
+          <span class="panel-value" style="font-size:0.72rem">A4:CF:12:B3:7E:01</span>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">Señal (RSSI)</span>
+          <span class="panel-value warn">-62 dBm</span>
+          <div class="panel-bar"><div class="panel-bar-fill" style="width:58%;background:#ffd60a"></div></div>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">RAM libre</span>
+          <span class="panel-value ok">186 KB</span>
+          <div class="panel-bar"><div class="panel-bar-fill" style="width:74%"></div></div>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">Temperatura</span>
+          <span class="panel-value ok">42.1 °C</span>
+        </div>
+        <div class="panel-cell">
+          <span class="panel-label">Uptime</span>
+          <span class="panel-value">00:14:32</span>
+        </div>
+      </div>
+      <span class="screenshot-label">Preview del panel · Pon tu captura aquí</span>
+    </div>
+
+    <div class="detail-grid">
+
+      <div class="detail-section">
+        <p class="detail-section-label">¿Qué envía por WebSocket?</p>
+        <ul>
+          <li>SSID de la red WiFi conectada</li>
+          <li>IP local asignada al ESP32</li>
+          <li>RSSI — potencia de señal en dBm</li>
+          <li>Dirección MAC del dispositivo</li>
+          <li>RAM libre y usada en tiempo real</li>
+          <li>Espacio libre del sketch en flash</li>
+          <li>Temperatura interna del chip</li>
+          <li>Uptime en segundos desde el arranque</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Hardware y software</p>
+        <ul>
+          <li>ESP32 Dev Module (cualquier variante)</li>
+          <li>Cable USB-C o micro-USB</li>
+          <li>Red WiFi 2.4 GHz</li>
+          <li>Visual Studio Code + extensión PlatformIO</li>
+          <li>Filesystem SPIFFS para la web embebida</li>
+          <li>Navegador moderno (Chrome, Edge, Firefox)</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Estructura del proyecto</p>
+        <ul>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">src/main.cpp</code> — código del ESP32 (C++)</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">data/index.html</code> — panel web (se sube como SPIFFS)</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">platformio.ini</code> — config de plataforma</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Cómo desplegarlo</p>
+        <ul>
+          <li>Edita SSID, password e IP fija en <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">main.cpp</code></li>
+          <li>Sube la web: <em>PlatformIO → Upload Filesystem Image</em> (pulsa BOOT en el ESP32 cuando aparezca el prompt)</li>
+          <li>Sube el firmware: flecha → en la barra de PlatformIO</li>
+          <li>Abre el Monitor Serie y copia la IP que aparece</li>
+          <li>Escribe <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">http://&lt;IP&gt;</code> en tu navegador</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <a href="../autobots-es.html" class="btn-back">← Volver a Autobots</a>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

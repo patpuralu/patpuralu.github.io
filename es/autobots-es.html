@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autobots</title>
+  <link rel="icon" type="image/png" href="../img/cybertron.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="index-bg autobots-page">
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="index-es.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index-es.html">Inicio</a></li>
+      <li><a href="decepticons-es.html">Decepticons</a></li>
+      <li><a href="about-es.html">Sobre mí</a></li>
+    </ul>
+  </nav>
+
+  <div class="projects-page">
+
+    <header class="page-header">
+      <p class="page-eyebrow">faction · autobots</p>
+      <h1 class="page-title"><span>Auto</span>bots</h1>
+      <div class="divider divider-auto"></div>
+      <p class="page-desc">Herramientas útiles, automatización y hardware. Proyectos pensados para resolver problemas reales.</p>
+    </header>
+
+    <div class="projects-grid">
+
+      <!-- WiFi Panel ESP32 -->
+      <article class="project-card">
+        <div class="project-img-wrap">
+          <div class="fake-panel">
+            <div class="panel-cell">
+              <span class="panel-label">SSID</span>
+              <span class="panel-value">HomeNet_5G</span>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">IP Local</span>
+              <span class="panel-value ok">192.168.1.50</span>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">Señal (RSSI)</span>
+              <span class="panel-value warn">-62 dBm</span>
+              <div class="panel-bar"><div class="panel-bar-fill" style="width:60%;background:#ffd60a"></div></div>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">RAM libre</span>
+              <span class="panel-value ok">186 KB</span>
+              <div class="panel-bar"><div class="panel-bar-fill" style="width:72%"></div></div>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">Uptime</span>
+              <span class="panel-value">00:14:32</span>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">Temperatura</span>
+              <span class="panel-value ok">42.1 °C</span>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">MAC</span>
+              <span class="panel-value" style="font-size:0.7rem">A4:CF:12:B3:7E:01</span>
+            </div>
+            <div class="panel-cell">
+              <span class="panel-label">WebSocket</span>
+              <span class="panel-value ok">● Activo</span>
+            </div>
+          </div>
+          <span class="project-status status-active">Activo</span>
+        </div>
+        <div class="project-body">
+          <h2 class="project-title">WiFi Panel ESP32</h2>
+          <p class="project-desc">Panel de monitorización en tiempo real para ESP32. Se conecta a tu WiFi, sirve una web desde SPIFFS y envía datos del sistema vía WebSocket: IP, RSSI, RAM, temperatura y uptime.</p>
+          <div class="project-stack">
+            <span class="stack-tag">C++</span>
+            <span class="stack-tag">PlatformIO</span>
+            <span class="stack-tag">ESP32</span>
+            <span class="stack-tag">WebSocket</span>
+            <span class="stack-tag">SPIFFS</span>
+          </div>
+          <div class="project-buttons">
+            <a href="https://github.com/patpuralu/Wifi_panel-ESP32" target="_blank" class="btn btn-primary-auto">↗ GitHub</a>
+            <a href="proyectos/wifi-panel-esp32.html" class="btn btn-secondary-auto">Ver proyecto →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- IBICE Watchdog -->
+      <article class="project-card">
+        <div class="project-img-wrap">
+          <!-- Fake terminal preview -->
+          <div class="fake-terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+              <span class="terminal-title">IBICE Watchdog v1.0</span>
+            </div>
+            <div class="terminal-body">
+              <span class="t-line t-blue">Escaneando red 192.168.1.0/24...</span>
+              <span class="t-line t-dim">──────────────────────────────────────</span>
+              <span class="t-line"><span class="t-green">(R) </span> 192.168.1.1  &nbsp; TP-Link &nbsp;&nbsp;&nbsp; Router</span>
+              <span class="t-line"><span class="t-yellow">(TD)</span> 192.168.1.10 &nbsp; Intel &nbsp;&nbsp;&nbsp;&nbsp; Tu PC</span>
+              <span class="t-line"><span class="t-green">(P) </span> 192.168.1.20 &nbsp; Apple &nbsp;&nbsp;&nbsp;&nbsp; iPhone</span>
+              <span class="t-line"><span class="t-red">(NS)</span> 192.168.1.45 &nbsp; Xiaomi &nbsp;&nbsp;&nbsp; Móvil 80,443</span>
+              <span class="t-line"><span class="t-yellow">(N) </span> 192.168.1.67 &nbsp; Unknown &nbsp;&nbsp; IoT</span>
+              <span class="t-line t-dim">──────────────────────────────────────</span>
+              <span class="t-line t-red">⚠ Nuevo dispositivo sospechoso detectado</span>
+              <span class="t-line t-prompt t-cursor">watchdog --scan 30s</span>
+            </div>
+          </div>
+          <span class="project-status status-active">Activo</span>
+        </div>
+        <div class="project-body">
+          <h2 class="project-title">IBICE Watchdog</h2>
+          <p class="project-desc">Monitor de red local en Python. Detecta dispositivos (IP + MAC + fabricante), escanea puertos, clasifica intrusos y genera alertas en tiempo real. Incluye mapa de red y exporta historial a CSV.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span>
+            <span class="stack-tag">Networking</span>
+            <span class="stack-tag">ARP</span>
+            <span class="stack-tag">Port Scan</span>
+          </div>
+          <div class="project-buttons">
+            <a href="https://github.com/patpuralu/Ibice-programas" target="_blank" class="btn btn-primary-auto">↗ GitHub</a>
+            <a href="proyectos/ibice-watchdog.html" class="btn btn-secondary-auto">Ver proyecto →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <a href="index-es.html" class="btn-back">← Volver al inicio</a>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

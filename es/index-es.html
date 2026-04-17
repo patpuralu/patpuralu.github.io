@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roll Out</title>
+  <link rel="icon" type="image/png" href="../img/cybertron.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="cybertron-bg">
+
+  <audio id="bgm" loop>
+    <source src="../mp3/transformers-theme.mp3" type="audio/mpeg">
+  </audio>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <span class="nav-logo">PATPUR<em>ALU</em></span>
+      <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <span class="music-icon">♩</span>
+        <span class="music-label">MUSIC OFF</span>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="autobots-es.html">Autobots</a></li>
+      <li><a href="decepticons-es.html">Decepticons</a></li>
+      <li><a href="about-es.html">Sobre mí</a></li>
+      <li><a href="../index.html" style="display:flex;align-items:center;gap:5px;">🌐 <span style="color:var(--blue)">ES</span>&nbsp;·&nbsp;EN</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-wrapper">
+    <p class="hero-eyebrow">patpur.github.io</p>
+    <h1 class="hero-title">Roll Out</h1>
+    <p class="hero-sub"> Autobots o Decepticons </p>
+
+    <div class="faction-grid">
+
+      <a href="autobots-es.html" class="faction-card autobots">
+        <div class="faction-logo-wrap">
+          <img src="../img/autobots.png" class="faction-logo" alt="Autobots">
+        </div>
+        <span class="faction-name">Autobots</span>
+        <p class="faction-desc">Herramientas, automatización y hardware. Proyectos orientados a utilidad real.</p>
+        <span class="faction-tag">2 proyectos</span>
+        <span class="faction-arrow">→</span>
+      </a>
+
+      <a href="decepticons-es.html" class="faction-card decepticons">
+        <div class="faction-logo-wrap">
+          <img src="../img/decepticons.png" class="faction-logo" alt="Decepticons">
+        </div>
+        <span class="faction-name">Decepticons</span>
+        <p class="faction-desc">Bajo nivel, ASM, binarios y C. Proyectos donde el hardware se toca de cerca.</p>
+        <span class="faction-tag">3 proyectos</span>
+        <span class="faction-arrow">→</span>
+      </a>
+
+      <a href="about-es.html" class="faction-card about-card">
+        <div class="faction-logo-wrap">
+          <img src="../img/info.png" class="faction-logo" alt="About">
+        </div>
+        <span class="faction-name">Sobre mí</span>
+        <p class="faction-desc">Quién soy, qué uso y por qué lo hago. Perfil, habilidades y estadísticas.</p>
+        <span class="faction-tag">patpuralu</span>
+        <span class="faction-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>

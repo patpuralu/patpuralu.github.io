@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShockwaveTR </title>
+  <link rel="icon" type="image/png" href="../../img/cybertron.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="index-bg decepticons-page">
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="../index-en.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index-en.html">Home</a></li>
+      <li><a href="../autobots-en.html">Autobots</a></li>
+      <li><a href="../decepticons-en.html">Decepticons</a></li>
+    </ul>
+  </nav>
+  <div class="project-detail">
+    <p class="detail-breadcrumb">
+      <a href="../index-en.html">Home</a><span>›</span>
+      <a href="../decepticons-en.html">Decepticons</a><span>›</span>
+      ShockwaveTR
+    </p>
+    <div class="detail-hero">
+      <p class="detail-eyebrow">decepticons · python · OSINT · terminal · threading</p>
+      <h1 class="detail-title">ShockwaveTR</h1>
+      <p class="detail-desc">
+        OSINT command-line tool with 5 independent modules: IP geolocation, full local network info, phone number analysis, username search across 22 social networks in parallel, and domain lookup. Includes JSON history, color-blindness support and a Shockwave ASCII banner.
+      </p>
+      <div class="detail-meta">
+        <span class="project-status status-active" style="position:static;">Active</span>
+        <span class="stack-tag">Python 3</span>
+        <span class="stack-tag">OSINT</span>
+        <span class="stack-tag">Threading</span>
+        <span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">Terminal</span>
+        <span class="stack-tag">JSON</span>
+      </div>
+    </div>
+    <div class="detail-actions">
+      <a href="https://github.com/patpuralu" target="_blank" class="btn-large btn-gh-decep">↗ View on GitHub</a>
+      <a href="../decepticons-en.html" class="btn-large btn-outline">← Back</a>
+    </div>
+    <div class="detail-screenshot" style="aspect-ratio:16/8;height:auto;">
+      <div class="fake-terminal" style="font-size:0.78rem;">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">ShockwaveTR — Username Tracker</span>
+        </div>
+        <div class="terminal-body" style="gap:5px;">
+          <span class="t-line t-purple">SEARCHING: PATPURALU</span>
+          <span class="t-line t-dim">Scanning 22 platforms...</span>
+          <span class="t-line t-dim">──────────────────────────────────────</span>
+          <span class="t-line"><span class="t-green">[✓] </span>GitHub               (1/22)</span>
+          <span class="t-line"><span class="t-yellow">[✗] </span>Instagram            (2/22)</span>
+          <span class="t-line"><span class="t-green">[✓] </span>YouTube              (3/22)</span>
+          <span class="t-line"><span class="t-yellow">[✗] </span>TikTok               (4/22)</span>
+          <span class="t-line"><span class="t-green">[✓] </span>Reddit               (5/22)</span>
+          <span class="t-line t-dim">──────────────────────────────────────</span>
+          <span class="t-line t-green">[+] Found on 3 platforms</span>
+          <span class="t-line t-prompt t-cursor">Press enter to continue</span>
+        </div>
+      </div>
+      <span class="screenshot-label">Preview · Drop your screenshot here</span>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-section">
+        <p class="detail-section-label">Available modules</p>
+        <ul>
+          <li><strong style="color:var(--decep-purple)">IP Tracker</strong> — geolocates an IP: country, city, coordinates, ISP, ASN, timezone, Google Maps link and local time</li>
+          <li><strong style="color:var(--decep-purple)">Show Your IP</strong> — shows your public IP and full local network info: CIDR, broadcast, usable range, gateway, /24 subnets</li>
+          <li><strong style="color:var(--decep-purple)">Phone Tracker</strong> — analyzes a phone number: carrier, region, timezone, E.164 format, validity, type (mobile/landline/VoIP)</li>
+          <li><strong style="color:var(--decep-purple)">Username Tracker</strong> — searches a username across 22 networks in parallel. Supports single or multiple users</li>
+          <li><strong style="color:var(--decep-purple)">Domain Lookup</strong> — resolves a domain to IP and gets country, ISP, registrar, creation date and DNS records</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <p class="detail-section-label">Libraries & tech</p>
+        <ul>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">requests</code> — HTTP calls to external APIs</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">phonenumbers</code> — phone number parsing and validation</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ThreadPoolExecutor</code> — parallel scanning of 22 platforms</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipaddress</code> — IPv4 network calculation</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">zoneinfo / pytz</code> — timezone to real local time conversion</li>
+          <li>APIs: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipwho.is</code>, <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipify.org</code>, <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">macvendors.com</code></li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <p class="detail-section-label">Supported networks (Username Tracker)</p>
+        <ul>
+          <li>GitHub · Instagram · TikTok · YouTube · Twitch</li>
+          <li>Reddit · Twitter/X · LinkedIn · Telegram · Snapchat</li>
+          <li>SoundCloud · Pinterest · Tumblr · Medium · Flickr</li>
+          <li>Dribbble · DeviantArt · Steam · Spotify · Behance</li>
+          <li>Product Hunt · Quora</li>
+        </ul>
+      </div>
+      <div class="detail-section">
+        <p class="detail-section-label">Extra features</p>
+        <ul>
+          <li>Automatic JSON history per module and per day in <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">results/</code></li>
+          <li>4 color-blindness modes: normal, protanopia, deuteranopia, tritanopia</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">@is_option</code> decorator shows the banner before each module</li>
+          <li>Main loop instead of recursion to avoid RecursionError in long sessions</li>
+          <li>Shockwave ASCII art banner in the main menu</li>
+        </ul>
+      </div>
+      <div class="detail-section full-width">
+        <p class="detail-section-label">Installation & usage</p>
+        <ul>
+          <li>Requires Python 3.9+ (for <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">zoneinfo</code>; Python 3.8 works with pytz installed)</li>
+          <li>Install deps: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">pip install requests phonenumbers</code></li>
+          <li>Run: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">python ShockwaveTR.py</code></li>
+          <li>Select a module from the numbered menu · Results are auto-saved in <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">results/</code></li>
+        </ul>
+      </div>
+    </div>
+    <a href="../decepticons-en.html" class="btn-back">← Back to Decepticons</a>
+  </div>
+  <script src="../../script.js"></script>
+</body>
+</html>

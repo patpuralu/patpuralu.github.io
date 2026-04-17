@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShockwaveTR</title>
+  <link rel="icon" type="image/png" href="../../img/cybertron.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="index-bg decepticons-page">
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="../index-es.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index-es.html">Inicio</a></li>
+      <li><a href="../autobots-es.html">Autobots</a></li>
+      <li><a href="../decepticons-es.html">Decepticons</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-detail">
+
+    <p class="detail-breadcrumb">
+      <a href="../index-es.html">Inicio</a><span>›</span>
+      <a href="../decepticons-es.html">Decepticons</a><span>›</span>
+      ShockwaveTR
+    </p>
+
+    <div class="detail-hero">
+      <p class="detail-eyebrow">decepticons · python · OSINT · terminal · threading</p>
+      <h1 class="detail-title">ShockwaveTR</h1>
+      <p class="detail-desc">
+        Herramienta OSINT de línea de comandos con 5 módulos independientes: rastreo de IPs con geolocalización completa, información de tu propia red, tracker de números de teléfono, buscador de usuarios en 22 redes sociales en paralelo, y lookup de dominios. Incluye historial en JSON, soporte para daltonismo y banner ASCII de Shockwave.
+      </p>
+      <div class="detail-meta">
+        <span class="project-status status-active" style="position:static;">Activo</span>
+        <span class="stack-tag">Python 3</span>
+        <span class="stack-tag">OSINT</span>
+        <span class="stack-tag">Threading</span>
+        <span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">Terminal</span>
+        <span class="stack-tag">JSON</span>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <a href="https://github.com/patpuralu" target="_blank" class="btn-large btn-gh-decep">↗ Ver en GitHub</a>
+      <a href="../decepticons-es.html" class="btn-large btn-outline">← Volver</a>
+    </div>
+
+    <!-- Fake terminal como screenshot -->
+    <div class="detail-screenshot" style="aspect-ratio:16/8;height:auto;">
+      <div class="fake-terminal" style="font-size:0.78rem;">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">ShockwaveTR — Username Tracker</span>
+        </div>
+        <div class="terminal-body" style="gap:5px;">
+          <span class="t-line t-purple">BUSCANDO: PATPURALU</span>
+          <span class="t-line t-dim">Escaneando 22 plataformas...</span>
+          <span class="t-line t-dim">──────────────────────────────────────</span>
+          <span class="t-line"><span class="t-green">[✓] </span>GitHub               (1/22)</span>
+          <span class="t-line"><span class="t-yellow">[✗] </span>Instagram            (2/22)</span>
+          <span class="t-line"><span class="t-green">[✓] </span>YouTube              (3/22)</span>
+          <span class="t-line"><span class="t-yellow">[✗] </span>TikTok               (4/22)</span>
+          <span class="t-line"><span class="t-green">[✓] </span>Reddit               (5/22)</span>
+          <span class="t-line"><span class="t-yellow">[✗] </span>Twitter / X          (6/22)</span>
+          <span class="t-line t-dim">──────────────────────────────────────</span>
+          <span class="t-line t-green">[+] Encontrado en 3 plataformas</span>
+          <span class="t-line t-prompt t-cursor">Pulsa enter para continuar</span>
+        </div>
+      </div>
+      <span class="screenshot-label">Preview · Pon tu captura aquí</span>
+    </div>
+
+    <div class="detail-grid">
+
+      <div class="detail-section">
+        <p class="detail-section-label">Módulos disponibles</p>
+        <ul>
+          <li><strong style="color:var(--decep-purple)">IP Tracker</strong> — geolocaliza una IP: país, ciudad, coordenadas, ISP, ASN, timezone, enlace a Google Maps y hora local</li>
+          <li><strong style="color:var(--decep-purple)">Show Your IP</strong> — muestra tu IP pública y toda la info de red local: CIDR, broadcast, rango usable, gateway, subredes /24</li>
+          <li><strong style="color:var(--decep-purple)">Phone Tracker</strong> — analiza un número de teléfono: operadora, región, timezone, formato E.164, validez, tipo (móvil/fijo/VoIP)</li>
+          <li><strong style="color:var(--decep-purple)">Username Tracker</strong> — busca un username en 22 redes en paralelo. Soporta 1 usuario o varios a la vez</li>
+          <li><strong style="color:var(--decep-purple)">Domain Lookup</strong> — resuelve un dominio a IP y obtiene país, ISP, registrador, fecha de creación y registros DNS</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Tecnologías y librerías</p>
+        <ul>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">requests</code> — peticiones HTTP a las APIs externas</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">phonenumbers</code> — parseo y validación de números de teléfono</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ThreadPoolExecutor</code> — escaneo paralelo de las 22 plataformas</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipaddress</code> — validación y cálculo de redes IPv4</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">zoneinfo / pytz</code> — conversión de timezone a hora local real</li>
+          <li>APIs: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipwho.is</code>, <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">ipify.org</code>, <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">macvendors.com</code></li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Redes soportadas (Username Tracker)</p>
+        <ul>
+          <li>GitHub · Instagram · TikTok · YouTube · Twitch</li>
+          <li>Reddit · Twitter/X · LinkedIn · Telegram · Snapchat</li>
+          <li>SoundCloud · Pinterest · Tumblr · Medium · Flickr</li>
+          <li>Dribbble · DeviantArt · Steam · Spotify · Behance</li>
+          <li>Product Hunt · Quora</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Extras del proyecto</p>
+        <ul>
+          <li>Historial automático en JSON por módulo y por día en <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">results/</code></li>
+          <li>4 modos de color por daltonismo: normal, protanopia, deuteranopia, tritanopia</li>
+          <li>Decorador <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">@is_option</code> que muestra el banner antes de cada módulo</li>
+          <li>Bucle principal en vez de recursión para evitar RecursionError en sesiones largas</li>
+          <li>Banner ASCII de Shockwave generado con arte propio</li>
+        </ul>
+      </div>
+
+      <div class="detail-section full-width">
+        <p class="detail-section-label">Instalación y uso</p>
+        <ul>
+          <li>Requiere Python 3.9+ (por <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">zoneinfo</code>; Python 3.8 también funciona con pytz instalado)</li>
+          <li>Instalar dependencias: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">pip install requests phonenumbers</code></li>
+          <li>Ejecutar: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">python ShockwaveTR.py</code></li>
+          <li>Selecciona el módulo con el número del menú · Los resultados se guardan automáticamente en <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">results/</code></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <a href="../decepticons-es.html" class="btn-back">← Volver a Decepticons</a>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

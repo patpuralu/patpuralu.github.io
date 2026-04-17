@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi Panel ESP32 </title>
+  <link rel="icon" type="image/png" href="../../img/cybertron.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="index-bg autobots-page">
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="../index-en.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index-en.html">Home</a></li>
+      <li><a href="../autobots-en.html">Autobots</a></li>
+      <li><a href="../decepticons-en.html">Decepticons</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-detail">
+
+    <p class="detail-breadcrumb">
+      <a href="../index-en.html">Home</a><span>›</span>
+      <a href="../autobots-en.html">Autobots</a><span>›</span>
+      WiFi Panel ESP32
+    </p>
+
+    <div class="detail-hero">
+      <p class="detail-eyebrow">autobots · hardware · ESP32 · IoT · WebSocket</p>
+      <h1 class="detail-title">WiFi Panel ESP32</h1>
+      <p class="detail-desc">
+        Turns an ESP32 into a real-time monitoring panel accessible from any browser on your network. The ESP32 connects to your WiFi, serves a web interface from SPIFFS and opens a WebSocket that continuously broadcasts system data as JSON: IP, RSSI, RAM, internal temperature, uptime and more.
+      </p>
+      <div class="detail-meta">
+        <span class="project-status status-active" style="position:static;">Active</span>
+        <span class="stack-tag">C++</span>
+        <span class="stack-tag">PlatformIO</span>
+        <span class="stack-tag">ESP32</span>
+        <span class="stack-tag">WebSocket</span>
+        <span class="stack-tag">SPIFFS</span>
+        <span class="stack-tag">JSON</span>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <a href="https://github.com/patpuralu/Wifi_panel-ESP32" target="_blank" class="btn-large btn-gh-auto">↗ View on GitHub</a>
+      <a href="../autobots-en.html" class="btn-large btn-outline">← Back</a>
+    </div>
+
+    <div class="detail-screenshot" style="aspect-ratio:16/8;height:auto;">
+      <div class="fake-panel" style="grid-template-columns:repeat(4,1fr);">
+        <div class="panel-cell"><span class="panel-label">SSID</span><span class="panel-value">HomeNet_5G</span></div>
+        <div class="panel-cell"><span class="panel-label">Local IP</span><span class="panel-value ok">192.168.1.50</span></div>
+        <div class="panel-cell"><span class="panel-label">Gateway</span><span class="panel-value">192.168.1.1</span></div>
+        <div class="panel-cell"><span class="panel-label">MAC</span><span class="panel-value" style="font-size:0.72rem">A4:CF:12:B3:7E:01</span></div>
+        <div class="panel-cell"><span class="panel-label">Signal (RSSI)</span><span class="panel-value warn">-62 dBm</span><div class="panel-bar"><div class="panel-bar-fill" style="width:58%;background:#ffd60a"></div></div></div>
+        <div class="panel-cell"><span class="panel-label">Free RAM</span><span class="panel-value ok">186 KB</span><div class="panel-bar"><div class="panel-bar-fill" style="width:74%"></div></div></div>
+        <div class="panel-cell"><span class="panel-label">Temperature</span><span class="panel-value ok">42.1 °C</span></div>
+        <div class="panel-cell"><span class="panel-label">Uptime</span><span class="panel-value">00:14:32</span></div>
+      </div>
+      <span class="screenshot-label">Panel preview · Drop your screenshot here</span>
+    </div>
+
+    <div class="detail-grid">
+
+      <div class="detail-section">
+        <p class="detail-section-label">What it sends via WebSocket</p>
+        <ul>
+          <li>SSID of the connected WiFi network</li>
+          <li>Local IP assigned to the ESP32</li>
+          <li>RSSI — signal strength in dBm</li>
+          <li>Device MAC address</li>
+          <li>Free and used RAM in real time</li>
+          <li>Free sketch space in flash</li>
+          <li>Internal chip temperature</li>
+          <li>Uptime in seconds since boot</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Hardware & software</p>
+        <ul>
+          <li>ESP32 Dev Module (any variant)</li>
+          <li>USB-C or micro-USB cable</li>
+          <li>2.4 GHz WiFi network</li>
+          <li>Visual Studio Code + PlatformIO extension</li>
+          <li>SPIFFS filesystem for the embedded web interface</li>
+          <li>Modern browser (Chrome, Edge, Firefox)</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Project structure</p>
+        <ul>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">src/main.cpp</code> — ESP32 code (C++)</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">data/index.html</code> — web panel (uploaded as SPIFFS)</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.82rem">platformio.ini</code> — platform config</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">How to deploy</p>
+        <ul>
+          <li>Edit SSID, password and static IP in <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">main.cpp</code></li>
+          <li>Upload the web: <em>PlatformIO → Upload Filesystem Image</em> (press BOOT on the ESP32 when prompted)</li>
+          <li>Upload firmware: click the → arrow in PlatformIO</li>
+          <li>Open Serial Monitor and copy the printed IP</li>
+          <li>Open <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">http://&lt;IP&gt;</code> in your browser</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <a href="../autobots-en.html" class="btn-back">← Back to Autobots</a>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

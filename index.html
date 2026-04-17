@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi Web</title>
-    <link rel="icon" type="image/png" href="../img/Dece.png">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: #111;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 3rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language</title>
+  <link rel="icon" type="image/png" href="img/cybertron.png">
+  <meta name="description" content="Patpuralu — Developer Portfolio">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Bienvenido a mi web</h1>
+<body class="index-bg">
+
+  <canvas id="particles"></canvas>
+
+  <div class="lang-screen">
+    <p class="lang-eyebrow">Developer</p>
+
+    <h1 class="lang-main-logo">PATPURALU</h1>
+    <p class="lang-tagline">Select your language</p>
+
+    <div class="lang-buttons">
+      <a href="es/index-es.html" class="lang-btn es">
+        <div class="lang-flag-wrap">
+          <img src="img/flag-es.png" class="lang-icon" alt="Español">
+        </div>
+        <span class="lang-label">Español</span>
+      </a>
+      <a href="en/index-en.html" class="lang-btn en">
+        <div class="lang-flag-wrap">
+          <img src="img/flag-en.png" class="lang-icon" alt="English">
+        </div>
+        <span class="lang-label">English</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

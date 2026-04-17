@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBICE Watchdog</title>
+  <link rel="icon" type="image/png" href="../../img/cybertron.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="index-bg autobots-page">
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="../index-en.html" class="nav-logo">PATPUR<em>ALU</em></a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index-en.html">Home</a></li>
+      <li><a href="../autobots-en.html">Autobots</a></li>
+      <li><a href="../decepticons-en.html">Decepticons</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-detail">
+
+    <p class="detail-breadcrumb">
+      <a href="../index-en.html">Home</a><span>›</span>
+      <a href="../autobots-en.html">Autobots</a><span>›</span>
+      IBICE Watchdog
+    </p>
+
+    <div class="detail-hero">
+      <p class="detail-eyebrow">autobots · python · networking · security · ARP</p>
+      <h1 class="detail-title">IBICE Watchdog</h1>
+      <p class="detail-desc">
+        Python tool to monitor your local network in real time. Scans via ARP, detects every connected device with IP, MAC and vendor, scans common ports, classifies device types (router, phone, TV, camera, IoT…) and fires alerts when an intruder appears. Saves history to CSV and prints a live network map.
+      </p>
+      <div class="detail-meta">
+        <span class="project-status status-active" style="position:static;">Active</span>
+        <span class="stack-tag">Python 3</span>
+        <span class="stack-tag">ARP</span>
+        <span class="stack-tag">Port Scan</span>
+        <span class="stack-tag">MAC Vendor API</span>
+        <span class="stack-tag">CSV</span>
+        <span class="stack-tag">Windows / Linux</span>
+      </div>
+    </div>
+
+    <div class="detail-actions">
+      <a href="https://github.com/patpuralu/Ibice-programas" target="_blank" class="btn-large btn-gh-auto">↗ View on GitHub</a>
+      <a href="../autobots-en.html" class="btn-large btn-outline">← Back</a>
+    </div>
+
+    <div class="detail-screenshot" style="aspect-ratio:16/8;height:auto;">
+      <div class="fake-terminal" style="font-size:0.8rem;">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">IBICE Watchdog — Watchdog Mode</span>
+        </div>
+        <div class="terminal-body" style="gap:6px;">
+          <span class="t-line t-blue">Starting IBICE Watchdog v1.0...</span>
+          <span class="t-line t-green">Network detected: 192.168.1.0/24 — Scanning...</span>
+          <span class="t-line t-dim">Type  IP               MAC                  Vendor            Device        Ports</span>
+          <span class="t-line t-dim">────  ───────────────  ───────────────────  ────────────────  ────────────  ─────</span>
+          <span class="t-line"><span class="t-green">(R) </span>  192.168.1.1      aa:bb:cc:11:22:33    TP-Link           Router        80</span>
+          <span class="t-line"><span class="t-yellow">(TD)</span>  192.168.1.10     xx:xx:xx:xx:xx:xx    Intel             Your PC       —</span>
+          <span class="t-line"><span class="t-green">(P) </span>  192.168.1.20     dd:ee:ff:44:55:66    Apple             Mobile        —</span>
+          <span class="t-line"><span class="t-red">(NS)</span>  192.168.1.45     aa:bb:cc:dd:ee:ff    Xiaomi            Mobile        80,443</span>
+          <span class="t-line t-dim">────────────────────────────────────────────────────────────────────────────────</span>
+          <span class="t-line t-red">⚠  Suspicious device: 192.168.1.45 — Xiaomi — Unregistered MAC</span>
+          <span class="t-line t-blue">Next scan in 30s... <span class="t-cursor"></span></span>
+        </div>
+      </div>
+      <span class="screenshot-label">Terminal preview · Drop your screenshot here</span>
+    </div>
+
+    <div class="detail-grid">
+
+      <div class="detail-section">
+        <p class="detail-section-label">Scan modes</p>
+        <ul>
+          <li><strong style="color:var(--auto-red)">Watchdog</strong> — continuous monitoring. Scans every X seconds and detects real-time changes: new devices, disconnections, status changes.</li>
+          <li><strong style="color:var(--auto-red)">Deep scan</strong> — full one-shot analysis. Scans all devices and their open ports in a single pass.</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Device classification</p>
+        <ul>
+          <li><span style="color:#38d4ff;font-family:var(--font-mono)">(TD)</span> Your device</li>
+          <li><span style="color:#38d4ff;font-family:var(--font-mono)">(R)</span>&nbsp; Network router</li>
+          <li><span style="color:#00d264;font-family:var(--font-mono)">(P)</span>&nbsp; Allowed device</li>
+          <li><span style="color:#ffd60a;font-family:var(--font-mono)">(N)</span>&nbsp; New device</li>
+          <li><span style="color:#e63946;font-family:var(--font-mono)">(NS)</span> New suspicious</li>
+          <li><span style="color:#e63946;font-family:var(--font-mono)">(S)</span>&nbsp; Confirmed suspicious</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">How discovery works</p>
+        <ul>
+          <li>Pings the full subnet (<code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">192.168.x.1–254</code>)</li>
+          <li>Gets IP and MAC via <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">arp -a</code></li>
+          <li>Queries vendor via <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">api.macvendors.com</code></li>
+          <li>Scans ports: 21, 22, 80, 443, 8080, 5000, 9100…</li>
+          <li>Classifies by MAC pattern, open ports and vendor</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <p class="detail-section-label">Persistence & files</p>
+        <ul>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">permitidos.txt</code> — trusted device whitelist</li>
+          <li><code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">historial_ibice.csv</code> — full activity log with timestamps</li>
+          <li>Visual network map printed in terminal after each scan</li>
+        </ul>
+      </div>
+
+      <div class="detail-section full-width">
+        <p class="detail-section-label">Installation & usage</p>
+        <ul>
+          <li>Requires Python 3 and <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">pip install requests</code></li>
+          <li>Run: <code style="color:var(--blue);font-family:var(--font-mono);font-size:0.8rem">python Ibice.py</code> (requires admin/root for ARP access)</li>
+          <li>Also available as a <strong style="color:var(--white)">.exe for Windows</strong> — no Python installation needed</li>
+          <li>Compatible with Windows (optimized) and Linux</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <a href="../autobots-en.html" class="btn-back">← Back to Autobots</a>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
