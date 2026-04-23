@@ -2,9 +2,7 @@
 const SUPABASE_URL  = "https://cnrwvbbfftpfujguitvc.supabase.co";
 const SUPABASE_ANON = "sb_publishable_kyblMJaYXRIhB3DF3rHw8A_Rm3Rl5aH";
 
-// ─── HASH DEL CÓDIGO OWNER (solo este queda aquí, los beta están en Supabase) ──
-// Genera tu hash en consola: await sha256("mob4pqfz6v6o")
-const OWNER_HASH = "";
+const OWNER_HASH = "83046a419f734c49ecee868e5a7b647ca9078abe1ffbcebb7bc0fbab6972b132";
 
 // ─── DATOS ─────────
 const MODULOS = {
