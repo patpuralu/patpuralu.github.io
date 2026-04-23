@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KernIA</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- MD5 para Gravatar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+</head>
+<body>
+
+  <!-- BANNER CUMPLEAÑOS  -->
+  <div id="bday-banner" style="display:none">
+    <span class="bday-banner-text">🎂 ¡feliz cumpleaños, <span id="bday-banner-name"></span>! que lo pases genial aunque tengas que estudiar 🎉</span>
+  </div>
+
+  <!-- ── MODAL SETUP ──── -->
+  <div class="modal-bg" id="modal-setup" style="display:none">
+    <div class="setup-modal">
+      <div class="logo-big">Kern<span>IA</span></div>
+      <p class="sub">asistente ia para fp informática.<br>cuéntame un poco sobre ti.</p>
+      <div class="setup-field">
+        <label class="setup-label">nombre</label>
+        <input class="setup-input" id="setup-name" type="text" placeholder="ej: Patpuralu" autocomplete="off">
+      </div>
+      <div class="setup-field">
+        <label class="setup-label">foto de perfil <span style="color:var(--dim)">(opcional)</span></label>
+        <div class="avatar-upload-row">
+          <div class="avatar-preview" id="setup-avatar-preview">--</div>
+          <div class="avatar-upload-opts">
+            <label class="avatar-upload-btn">
+              subir imagen
+              <input type="file" id="setup-avatar-file" accept="image/png,image/jpeg,image/gif,image/webp" style="display:none" onchange="handleAvatarUpload(this)">
+            </label>
+            <span style="font-size:9px;color:var(--dim)">o</span>
+            <input class="setup-input" id="setup-email" type="email" placeholder="email de Gravatar" style="margin:0;width:auto;flex:1">
+            <p class="setup-hint" style="margin-top:2px">si tienes cuenta en <a href="https://gravatar.com" target="_blank" style="color:var(--green)">gravatar.com</a> pon tu email</p>
+          </div>
+        </div>
+      </div>
+      <div class="setup-field">
+        <label class="setup-label">fecha de nacimiento <span style="color:var(--dim)">(opcional)</span></label>
+        <input class="setup-input" id="setup-bday" type="date">
+        <p class="setup-hint">te felicitaré el día que toque 🎂</p>
+      </div>
+      <div class="setup-field">
+        <label class="setup-label">api key <span style="color:var(--dim)">(puedes añadirla después)</span></label>
+        <div class="provs" style="margin-bottom:.5rem">
+          <div class="prov on" data-p="groq"   onclick="selProv('groq')">Groq<span class="rec">GRATIS</span></div>
+          <div class="prov"    data-p="claude" onclick="selProv('claude')">Claude</div>
+          <div class="prov"    data-p="openai" onclick="selProv('openai')">OpenAI</div>
+        </div>
+        <p class="prov-link" id="setup-prov-hint"></p>
+        <input class="setup-input" id="setup-key" type="password" placeholder="pega tu api key... (opcional)">
+      </div>
+      <button class="setup-btn" onclick="saveSetup()">empezar →</button>
+      <div style="text-align:center;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--border)">
+        <span style="font-size:10px;color:var(--muted)">¿ya tienes una cuenta?</span>
+        <button onclick="switchToImport()" style="font-family:var(--font);font-size:10px;background:none;border:none;color:var(--green);cursor:pointer;text-decoration:underline;margin-left:4px">importar cuenta →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL IMPORTAR ────────── -->
+  <div class="modal-bg" id="modal-import" style="display:none">
+    <div class="modal">
+      <h3>// importar cuenta</h3>
+      <p>pega el código de tu cuenta para recuperar tu perfil y conversaciones.</p>
+      <input id="import-uid" type="text" placeholder="pega tu código aquí..." autocomplete="off">
+      <p id="import-err" style="font-size:10px;color:var(--red);min-height:14px;margin-top:3px"></p>
+      <div class="modal-btns">
+        <button class="mbtn" onclick="switchToSetup()">← volver</button>
+        <button class="mbtn ok" onclick="importAccount()">importar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL API KEY ──────── -->
+  <div class="modal-bg" id="modal-key" style="display:none">
+    <div class="modal">
+      <h3>// api key</h3>
+      <p>se guarda solo en tu navegador.</p>
+      <div class="provs">
+        <div class="prov on" data-p="groq"   onclick="selProv('groq')">Groq<span class="rec">GRATIS</span></div>
+        <div class="prov"    data-p="claude" onclick="selProv('claude')">Claude</div>
+        <div class="prov"    data-p="openai" onclick="selProv('openai')">OpenAI</div>
+      </div>
+      <p class="prov-link" id="key-prov-hint"></p>
+      <input id="key-input" type="password" placeholder="pega tu api key aquí...">
+      <div class="modal-btns">
+        <button class="mbtn" onclick="closeKeyModal()">cancelar</button>
+        <button class="mbtn ok" onclick="saveKey()">guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL MODO EXTREMO (advertencia) ───── -->
+  <div class="modal-bg" id="modal-extremo" style="display:none">
+    <div class="modal" style="border-top-color:var(--red)">
+      <h3 style="color:var(--red)">// advertencia — modo extremo</h3>
+      <p style="line-height:1.8">
+        en este modo la ia puede:<br>
+        <span style="color:var(--red)">·</span> insultarte <br>
+        <span style="color:var(--red)">·</span> ser muy brusca y sarcástica<br>
+        <span style="color:var(--red)">·</span> usar lenguaje fuerte<br>
+        <span style="color:var(--amber)">·</span> gastar más tokens de lo habitual<br><br>
+        <span style="color:var(--muted)">está pensado para uso personal y humor. si te ofende fácilmente, usa otro modo.</span>
+      </p>
+      <div class="modal-btns">
+        <button class="mbtn" onclick="cancelExtremo()">cancelar</button>
+        <button class="mbtn" style="background:rgba(224,85,85,.15);border-color:var(--red);color:var(--red)" onclick="confirmExtremo()">lo entiendo, activar →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODAL CUMPLEAÑOS ─────── -->
+  <div class="modal-bg" id="modal-bday" style="display:none">
+    <div class="bday-modal">
+      <div class="bday-art">  __|__  __|__  __|__
+ / * \ / * \ / * \
+|_____|_____|_____|</div>
+      <h2>¡feliz cumpleaños!</h2>
+      <p>hoy es tu día, <span class="bday-name" id="bday-name-txt"></span>.<br>
+      que lo pases increíble 🎂<br>un año más de sabiduría acumulada.</p>
+      <button class="bday-close" onclick="closeBdayModal()">gracias kernia ↗</button>
+    </div>
+  </div>
+
+  <!-- ── HEADER ───── -->
+  <header>
+    <div class="logo">
+      <span class="logo-br">[</span>Kern<span>IA</span><span class="logo-br">]</span>
+      <div class="cursor"></div>
+    </div>
+
+    <button class="header-user" onclick="openProfile()" title="ver perfil">
+      <div class="header-avatar" id="header-avatar"><span id="header-avatar-text">--</span></div>
+      <div class="header-user-info">
+        <span class="uname" id="header-name">—</span>
+        <span class="user-badges" id="user-badges"></span>
+      </div>
+    </button>
+
+    <div class="spacer"></div>
+
+    <!-- MODOS IA -->
+    <div class="mood-selector">
+      <button class="mood-btn active" data-mood="normal"  onclick="setMood('normal')">normal</button>
+      <button class="mood-btn"        data-mood="directo" onclick="setMood('directo')">directo</button>
+      <button class="mood-btn angry"  data-mood="extremo" onclick="requestExtremo()">extremo</button>
+    </div>
+
+    <!-- SEPARADOR -->
+    <div class="header-sep"></div>
+
+    <!-- CICLOS -->
+    <div class="ciclos">
+      <button class="cbtn" data-c="SMR"     onclick="selCiclo('SMR')">SMR</button>
+      <button class="cbtn" data-c="ASIR"    onclick="selCiclo('ASIR')">ASIR</button>
+      <button class="cbtn" data-c="DAW"     onclick="selCiclo('DAW')">DAW</button>
+      <button class="cbtn" data-c="DAM"     onclick="selCiclo('DAM')">DAM</button>
+      <button class="cbtn" data-c="General" onclick="selCiclo('General')">General</button>
+    </div>
+
+    <a href=".../es/index-es.html" class="key-btn back-btn" title="volver al portfolio">← volver</a>
+    <button class="key-btn" id="key-btn" onclick="openKeyModal()">⚙ api key</button>
+  </header>
+
+  <!-- ── APP ────────── -->
+  <div class="app-wrap">
+
+    <!-- ── VISTA CHAT ─────── -->
+    <div id="view-chat" class="view-chat">
+
+      <!-- HISTORIAL -->
+      <div class="hist-col">
+        <div class="hist-header">
+          <span class="hist-title">conversaciones</span>
+          <button class="new-chat-btn" onclick="newChat()">+ nueva</button>
+        </div>
+        <div class="hist-list" id="hist-list">
+          <div class="hist-empty">aquí aparecerán<br>tus conversaciones</div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR MÓDULOS -->
+      <aside id="sidebar-mods">
+        <div>
+          <div class="stitle">módulos</div>
+          <div id="mod-list"><div class="mod" style="font-size:10px;color:var(--dim)">selecciona ciclo →</div></div>
+        </div>
+        <div>
+          <div class="stitle">consultas rápidas</div>
+          <div id="quick-list">
+            <button class="qbtn" onclick="qa('¿Diferencia entre TCP y UDP?')">TCP vs UDP</button>
+            <button class="qbtn" onclick="qa('¿Cómo funciona el modelo OSI?')">modelo OSI</button>
+            <button class="qbtn" onclick="qa('Explícame subredes y CIDR')">subredes</button>
+            <button class="qbtn" onclick="qa('¿Qué es VLAN?')">VLANs</button>
+            <button class="qbtn" onclick="qa('chmod y permisos en Linux')">chmod Linux</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CHAT -->
+      <div class="chat">
+        <div class="msgs" id="msgs">
+          <div class="welcome" id="welcome">
+            <div class="w-ascii">┌──────────────────────────┐
+│     KERNIA · FP · IA     │
+│  SMR · ASIR · DAW · DAM  │
+└──────────────────────────┘</div>
+            <div class="wlogo">Kern<span>IA</span></div>
+            <div class="wsub">asistente ia para fp de informática.<br>responde con el <em>temario oficial del BOE</em>.<br>selecciona tu ciclo para empezar.</div>
+            <div class="wciclos">
+              <button class="wc" data-c="SMR"     onclick="selCiclo('SMR')">SMR</button>
+              <button class="wc" data-c="ASIR"    onclick="selCiclo('ASIR')">ASIR</button>
+              <button class="wc" data-c="DAW"     onclick="selCiclo('DAW')">DAW</button>
+              <button class="wc" data-c="DAM"     onclick="selCiclo('DAM')">DAM</button>
+              <button class="wc" data-c="General" onclick="selCiclo('General')" style="border-color:var(--muted);color:var(--muted)">General</button>
+            </div>
+          </div>
+        </div>
+        <div class="input-area">
+          <div class="irow" id="irow">
+            <span class="prompt-sym" id="prompt-sym">$</span>
+            <textarea id="inp" placeholder="pregunta algo..." rows="1"></textarea>
+            <button class="sbtn" id="sbtn" onclick="send()">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M2 8L14 2L8 14L7 9L2 8Z" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="ihint">
+            ciclo: <span id="ciclo-badge" class="badge b-none">ninguno</span>
+            &nbsp;·&nbsp; modo: <span id="mood-badge" class="badge b-mood-normal">normal</span>
+            &nbsp;·&nbsp; enter para enviar
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /view-chat -->
+
+    <!-- ── VISTA PERFIL ──────── -->
+    <div id="view-profile" style="display:none" class="view-profile">
+
+      <div class="profile-page">
+
+        <!-- Columna izquierda -->
+        <div class="profile-left">
+          <div class="profile-photo-big" id="profile-photo-big">
+            <img id="profile-img" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:4px">
+            <span id="profile-initials">--</span>
+          </div>
+          <div class="profile-name-big" id="profile-name-big">—</div>
+          <div class="profile-badges-big" id="profile-badges-big"></div>
+
+          <div class="profile-uid-block">
+            <div class="profile-label">tu código de cuenta</div>
+            <div class="profile-uid" id="pf-uid">—</div>
+            <button class="profile-copy-btn" id="pf-copy-btn" onclick="copyUID()">copiar código</button>
+            <p class="setup-hint">úsalo para importar tu cuenta en otro dispositivo</p>
+          </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="profile-right">
+          <div class="profile-section-title">información</div>
+          <div class="profile-grid">
+            <div class="profile-stat">
+              <div class="profile-label">nombre</div>
+              <div class="profile-val" id="pf-name">—</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-label">cumpleaños</div>
+              <div class="profile-val" id="pf-bday">—</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-label">ciclo más usado</div>
+              <div class="profile-val" id="pf-ciclo">—</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-label">conversaciones</div>
+              <div class="profile-val" id="pf-convs">0</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-label">proveedor ia</div>
+              <div class="profile-val" id="pf-prov">—</div>
+            </div>
+            <div class="profile-stat">
+              <div class="profile-label">modo ia</div>
+              <div class="profile-val" id="pf-mood">—</div>
+            </div>
+          </div>
+
+          <div class="profile-section-title" style="margin-top:1.5rem">acciones</div>
+          <div class="profile-actions">
+            <button class="profile-action-btn" onclick="openKeyModal()">cambiar api key</button>
+            <button class="profile-action-btn" onclick="editProfile()">editar perfil</button>
+            <button class="profile-action-btn" onclick="openUnlockModal()">código especial</button>
+            <button class="profile-action-btn" id="btn-owner-panel" onclick="openOwnerModal()" style="display:none;border-color:rgba(232,160,32,.3);color:var(--amber)">★ panel owner</button>
+            <button class="profile-action-btn danger" onclick="confirmReset()">resetear cuenta</button>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="profile-back-btn" onclick="closeProfile()">← volver al chat</button>
+
+    </div><!-- /view-profile -->
+
+  </div><!-- /app-wrap -->
+
+  <!-- ── MODAL CÓDIGO ESPECIAL ──── -->
+  <div class="modal-bg" id="modal-unlock" style="display:none">
+    <div class="modal">
+      <h3>// código especial</h3>
+      <p>si tienes un código especial de acceso, introdúcelo aquí.</p>
+      <input id="unlock-input" type="password" placeholder="introduce el código...">
+      <p id="unlock-msg" style="font-size:10px;min-height:14px;margin-top:3px"></p>
+      <div class="modal-btns">
+        <button class="mbtn" onclick="closeUnlockModal()">cancelar</button>
+        <button class="mbtn ok" onclick="tryUnlock()">verificar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-bg" id="modal-owner" style="display:none">
+    <div class="modal" style="max-width:440px">
+      <h3 style="color:var(--amber)">★ panel owner</h3>
+      <p>crea códigos beta. cada código es una contraseña que das a una persona. cuando la introduce, se activa su beta y el código queda ligado a su cuenta.</p>
+
+      <div class="stitle" style="margin:.75rem 0 .4rem">crear nuevo código beta</div>
+      <div style="display:flex;gap:6px;margin-bottom:4px">
+        <input id="owner-code-label" class="setup-input" type="text" placeholder="nombre (ej: amigo1)" style="flex:1;margin:0">
+        <input id="owner-code-pass"  class="setup-input" type="text" placeholder="contraseña secreta" style="flex:2;margin:0">
+      </div>
+      <button class="mbtn ok" onclick="createBetaCode()" style="width:100%;margin-top:6px">crear código →</button>
+      <p id="owner-code-msg" style="font-size:10px;min-height:14px;margin-top:4px"></p>
+
+      <div class="stitle" style="margin:.9rem 0 .4rem">códigos existentes</div>
+      <div id="owner-codes-list" style="display:flex;flex-direction:column;gap:4px;max-height:180px;overflow-y:auto"></div>
+
+      <div class="modal-btns" style="margin-top:.9rem">
+        <button class="mbtn" onclick="closeOwnerModal()">cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -69,6 +69,46 @@
     </div>
   </div>
 
+  <!-- ── KERNIA BOTTOM BAR ── -->
+  <div class="kernia-bar">
+    <div class="kernia-bar-left">
+      <span class="kernia-bar-logo">[Kern<em>IA</em>]<span class="kernia-cursor"></span></span>
+      <span class="kernia-bar-tag">en desarrollo</span>
+    </div>
+    <div class="kernia-bar-center">
+      Asistente de IA para FP informática · SMR · ASIR · DAW · DAM
+    </div>
+    <a href="KernIA/index.html" class="kernia-bar-btn">probar →</a>
+  </div>
+
+  <style>
+  .kernia-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 44px;
+    background: rgba(8,12,8,.95);
+    border-top: 1px solid rgba(57,211,83,.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    gap: 1rem;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+  .kernia-bar-left  { display:flex; align-items:center; gap:.75rem; flex-shrink:0; }
+  .kernia-bar-logo  { font-family:'Courier New',monospace; font-weight:700; font-size:14px; color:#39d353; letter-spacing:-.5px; }
+  .kernia-bar-logo em { color:#c8d8c8; font-style:normal; }
+  .kernia-cursor    { display:inline-block; width:8px; height:12px; background:#39d353; margin-left:2px; vertical-align:middle; animation:kblink .9s step-end infinite; }
+  @keyframes kblink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .kernia-bar-tag   { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#39d353; background:rgba(57,211,83,.1); border:1px solid rgba(57,211,83,.3); padding:2px 8px; border-radius:2px; }
+  .kernia-bar-center{ font-family:'Courier New',monospace; font-size:11px; color:rgba(200,216,200,.4); flex:1; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .kernia-bar-btn   { font-family:'Courier New',monospace; font-size:12px; font-weight:700; color:#39d353; border:1px solid rgba(57,211,83,.4); padding:5px 16px; border-radius:2px; text-decoration:none; transition:all .15s; flex-shrink:0; }
+  .kernia-bar-btn:hover { background:rgba(57,211,83,.12); border-color:#39d353; }
+  /* espacio para que la barra no tape contenido */
+  body { padding-bottom: 44px; }
+  </style>
+
   <script src="../script.js"></script>
 </body>
 </html>
