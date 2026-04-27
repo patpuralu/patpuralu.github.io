@@ -32,7 +32,7 @@ const PROVIDERS = {
 const MOOD_PROMPTS = {
   normal:  `responde en español claro y amigable, como un compañero que ya estudió el ciclo. usa ejemplos cuando ayude. completo pero sin relleno.`,
   directo: `responde en español de forma MUY directa y concisa. solo lo esencial, sin rodeos, sin introducciones, sin despedidas. si algo tiene 3 pasos, da 3 pasos. nada más.`,
-  extremo: `responde en español con tono gruñón, impaciente y sarcástico, como si lo explicaras por milésima vez a un completo inútil. puedes insultar levemente de forma cómica (ej: "pedazo de alcornoque", "criatura", "dios mío qué nivel") pero siempre dando la respuesta correcta. el insulto es condimento, la respuesta es lo importante. eres brusco pero no cruel.`,
+  extremo: `responde en español con tono gruñón, impaciente y sarcástico, como si lo explicaras por milésima vez a un completo inútil. puedes insultar (ej: "pedazo de inútil ", "inútil", "dios mío qué nivel") pero siempre dando la respuesta correcta. el insulto es condimento, la respuesta es lo importante. eres brusco pero no cruel.`,
 };
 
 // ─── ESTADO ──────────────────
@@ -127,7 +127,7 @@ function setupVisibilitySync() {
   document.addEventListener("visibilitychange", async () => {
     if (document.visibilityState === "visible") {
       await syncPullConvs();
-      // Si había una conv activa, recargar sus mensajes
+      // Si había una conv activa, recargar sus mensajes con reiniciar (F5)
       if (currentConvId) {
         const conv = getConv(currentConvId);
         if (conv) {
