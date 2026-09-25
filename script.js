@@ -1,4 +1,7 @@
-/* PATPURALU // interaction layer*/
+/* PATPURALU // interaction layer
+   Enhanced version: scroll depth, 3D tilt, ambient particles,
+   page transitions, responsive navigation and reduced-motion support.
+*/
 
 (() => {
   'use strict';
@@ -285,7 +288,10 @@
       const hint = $('.video-scroll-hint', track);
       if (!video) return;
 
-      const FPS = 60;
+      // The video follows scroll directly. The important smoothing happens by
+      // preventing a backlog of seeks: while the decoder is seeking, we keep
+      // only the newest target and apply that as soon as the current frame is ready.
+      const FPS = 30;
       const FRAME = 1 / FPS;
       const MIN_SEEK_GAP_MS = 20;
 
@@ -679,9 +685,10 @@
         const prefix = isEn ? 'es' : 'en';
         const currentName = parts[parts.length - 1];
         const isProjectDetail = parts.length >= 3 && parts[1] === 'proyectos';
+        const cleanName = currentName.replace(/\.html+$/i, '').replace(/-(en|es)$/i, '');
         const name = isProjectDetail
-          ? currentName
-          : currentName.replace(/-(en|es)(?=\.html$)/i, '') + (isEn ? '-es.html' : '-en.html');
+          ? cleanName + '.html'
+          : cleanName + (isEn ? '-es.html' : '-en.html');
         target = '../' + prefix + '/' + (isProjectDetail ? 'proyectos/' : '') + name;
       }
       if (!target) return;
