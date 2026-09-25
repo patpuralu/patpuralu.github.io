@@ -146,7 +146,7 @@
       grid.className = 'scene-grid';
       document.body.appendChild(grid);
     }
-    if (!$('.scroll-progress')) {
+    if (!$('.lang-screen') && !$('.scroll-progress')) {
       const progress = document.createElement('div');
       progress.className = 'scroll-progress';
       document.body.appendChild(progress);
@@ -648,7 +648,7 @@
   }
 
   function setupBackTop() {
-    if ($('.back-top')) return;
+    if ($('.lang-screen') || $('.back-top')) return;
     const btn = document.createElement('button');
     btn.className = 'back-top';
     btn.type = 'button';
@@ -689,7 +689,7 @@
         const name = isProjectDetail
           ? cleanName + '.html'
           : cleanName + (isEn ? '-es.html' : '-en.html');
-        target = '../' + prefix + '/' + (isProjectDetail ? 'proyectos/' : '') + name;
+        target = (isProjectDetail ? '../../' : '../') + prefix + '/' + (isProjectDetail ? 'proyectos/' : '') + name;
       }
       if (!target) return;
       const li = document.createElement('li');
