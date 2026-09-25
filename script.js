@@ -285,7 +285,7 @@
       const hint = $('.video-scroll-hint', track);
       if (!video) return;
 
-      const FPS = 30;
+      const FPS = 60;
       const FRAME = 1 / FPS;
       const MIN_SEEK_GAP_MS = 20;
 
