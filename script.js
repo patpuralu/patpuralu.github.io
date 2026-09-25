@@ -677,28 +677,39 @@
     $$('.navbar').forEach(nav => {
       const links = $('.nav-links', nav);
       if (!links || $('.nav-language', links)) return;
-      const path = location.pathname.replace(/\\/g, '/');
-      const parts = path.split('/').filter(Boolean);
-      const isEn = document.documentElement.lang === 'en';
-      let target = '';
-      if (parts.length >= 2 && (parts[0] === 'es' || parts[0] === 'en')) {
-        const prefix = isEn ? 'es' : 'en';
-        const currentName = parts[parts.length - 1];
-        const isProjectDetail = parts.length >= 3 && parts[1] === 'proyectos';
-        const cleanName = currentName.replace(/\.html+$/i, '').replace(/-(en|es)$/i, '');
-        const name = isProjectDetail
-          ? cleanName + '.html'
-          : cleanName + (isEn ? '-es.html' : '-en.html');
-        target = (isProjectDetail ? '../../' : '../') + prefix + '/' + (isProjectDetail ? 'proyectos/' : '') + name;
+
+      // Build the language target from the real /es/ or /en/ segment.
+      // This works both on GitHub Pages and when opening the site locally
+      // from a file:// path (where those segments are not at pathname[0]).
+      const path = decodeURIComponent(location.pathname.replace(/\\/g, '/'));
+      const match = path.match(/(?:^|\/)(es|en)\/(proyectos\/)?([^\/]+\.html)$/i);
+      if (!match) return;
+
+      const currentLang = match[1].toLowerCase();
+      const projectPath = match[2] || '';
+      const currentName = match[3];
+      const targetLang = currentLang === 'en' ? 'es' : 'en';
+      const cleanName = currentName.replace(/\.html+$/i, '').replace(/-(en|es)$/i, '');
+
+      let relativeRoot;
+      let targetName;
+      if (projectPath) {
+        relativeRoot = '../../';
+        targetName = cleanName + '.html';
+      } else {
+        relativeRoot = '../';
+        targetName = cleanName + (targetLang === 'en' ? '-en.html' : '-es.html');
       }
-      if (!target) return;
+
+      const target = relativeRoot + targetLang + '/' + projectPath + targetName;
+
       const li = document.createElement('li');
       li.className = 'nav-language';
       const a = document.createElement('a');
       a.href = target;
-      a.setAttribute('lang', isEn ? 'es' : 'en');
-      a.textContent = isEn ? 'ES' : 'EN';
-      a.setAttribute('aria-label', isEn ? 'Cambiar a español' : 'Switch to English');
+      a.setAttribute('lang', targetLang);
+      a.textContent = targetLang.toUpperCase();
+      a.setAttribute('aria-label', targetLang === 'es' ? 'Cambiar a español' : 'Switch to English');
       li.appendChild(a);
       links.appendChild(li);
     });
@@ -994,7 +1005,6 @@
     setupV10Experience();
     setupV7ProjectChrome();
     setupVideoCleanup();
-    setupLanguageSwitch();
     setupSectionMarkers();
     setupPageFooter();
     setupCardDepthDecor();

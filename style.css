@@ -1332,12 +1332,8 @@ body.enhanced .pointer-glow {
   animation: orbitPulse 8s ease-in-out infinite;
 }
 .lang-screen::after {
-  content: '';
-  position: absolute;
-  width: 1px; height: 110vh;
-  background: linear-gradient(to bottom, transparent, rgba(56,212,255,.12), transparent);
-  transform: rotate(27deg);
-  opacity: .7;
+  content: none;
+  display: none;
 }
 @keyframes orbitPulse { 0%,100%{transform:scale(.96);opacity:.5} 50%{transform:scale(1.03);opacity:1} }
 .lang-main-logo { position: relative; z-index: 2; text-shadow: 0 0 45px rgba(0,180,255,.1); }
@@ -3690,3 +3686,6 @@ body.enhanced.language-entry .cybertron-layer {
 @media (prefers-reduced-motion: reduce) {
   .video-scroll-track { height:100svh; }
 }
+
+/* Language chooser: keep the entry screen clean; scroll progress belongs to content pages. */
+body:has(.lang-screen) .scroll-progress { display:none !important; }
