@@ -1,7 +1,4 @@
-/* PATPURALU // interaction layer
-   Enhanced version: scroll depth, 3D tilt, ambient particles,
-   page transitions, responsive navigation and reduced-motion support.
-*/
+/* PATPURALU // interaction layer*/
 
 (() => {
   'use strict';
@@ -288,9 +285,7 @@
       const hint = $('.video-scroll-hint', track);
       if (!video) return;
 
-      // The video follows scroll directly. The important smoothing happens by
-      // preventing a backlog of seeks: while the decoder is seeking, we keep
-      // only the newest target and apply that as soon as the current frame is ready.
+      // The video follows scroll directly. 
       const FPS = 30;
       const FRAME = 1 / FPS;
       const MIN_SEEK_GAP_MS = 20;
@@ -878,8 +873,6 @@
       }, { passive: true });
     }
 
-    // The old vertical chapter rail was visually noisy on the homepage.
-    // Navigation is now handled by the main HUD/scroll progress only.
   }
 
   /* -------------------- V7 // PROJECT DOSSIER FX -------------------- */
